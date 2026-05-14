@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "id": "sap-offer-builder",
+  "name": {"de": "SAP Angebotsentwurf", "en": "SAP Offer Draft Builder"},
+  "version": "0.1.0",
+  "description": {
+    "de": "Erstellt Entwürfe für SAP PM Auftragstexte und Angebote. Nur Entwürfe — Überprüfung erforderlich.",
+    "en": "Generates draft texts for SAP PM orders and offers. Drafts only — review required."
+  },
+  "author": "jarvis-industrial-de contributors",
+  "license": "MIT",
+  "permissions": [],
+  "risk_level": "medium",
+  "entry": "handler.py",
+  "inputs": [
+    {"name": "work_type", "type": "string", "required": true, "description": {"de": "Art der Arbeit (z.B. Wartung, Inspektion, Reparatur)", "en": "Type of work (e.g. maintenance, inspection, repair)"}},
+    {"name": "equipment", "type": "string", "required": true, "description": {"de": "Anlage oder Betriebsmittel", "en": "Equipment or asset"}},
+    {"name": "location", "type": "string", "required": false, "description": {"de": "Aufstellort", "en": "Installation location"}},
+    {"name": "hours", "type": "number", "required": false, "description": {"de": "Geschätzte Stunden", "en": "Estimated hours"}},
+    {"name": "norm_ref", "type": "string", "required": false, "description": {"de": "Normreferenz (z.B. VDE 0105)", "en": "Norm reference (e.g. VDE 0105)"}}
+  ],
+  "outputs": [
+    {"name": "draft", "type": "string", "description": {"de": "SAP-Auftragstext-Entwurf", "en": "SAP order text draft"}}
+  ],
+  "examples": [
+    {"input": {"work_type": "Wartung", "equipment": "Schaltanlage HS1", "location": "Gebäude A", "hours": 4, "norm_ref": "VDE 0105"}, "expected_output_contains": "Schaltanlage HS1"}
+  ],
+  "compliance_notice": "Nur Entwürfe. Kein Normtext. Vor Verwendung durch Fachkraft prüfen.",
+  "tags": ["sap", "pm", "angebot", "auftragstext", "elektro"]
+}

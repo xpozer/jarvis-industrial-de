@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JARVIS Skill Manifest",
+  "description": "Manifest schema for JARVIS-compatible and OpenJarvis-compatible skills",
+  "type": "object",
+  "required": ["schema_version", "id", "name", "version", "description", "permissions", "risk_level", "entry"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["1.0"],
+      "description": "Manifest schema version"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{2,63}$",
+      "description": "Unique skill identifier, kebab-case"
+    },
+    "name": {
+      "type": "object",
+      "required": ["de", "en"],
+      "properties": {
+        "de": {"type": "string"},
+        "en": {"type": "string"}
+      }
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "object",
+      "required": ["de", "en"],
+      "properties": {
+        "de": {"type": "string"},
+        "en": {"type": "string"}
+      }
+    },
+    "author": {"type": "string"},
+    "license": {"type": "string"},
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["read_files", "write_files", "network_read", "network_write", "shell_exec", "clipboard_read", "clipboard_write", "system_info"]
+      }
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "entry": {
+      "type": "string",
+      "description": "Relative path to the skill entry point"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": {"type": "string"},
+          "type": {"type": "string"},
+          "required": {"type": "boolean"},
+          "description": {"type": "object", "properties": {"de": {"type": "string"}, "en": {"type": "string"}}}
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": {"type": "string"},
+          "type": {"type": "string"},
+          "description": {"type": "object", "properties": {"de": {"type": "string"}, "en": {"type": "string"}}}
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "input": {"type": "object"},
+          "expected_output_contains": {"type": "string"}
+        }
+      }
+    },
+    "compliance_notice": {"type": "string"},
+    "tags": {"type": "array", "items": {"type": "string"}}
+  }
+}

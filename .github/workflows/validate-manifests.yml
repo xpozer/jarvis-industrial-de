@@ -1,0 +1,27 @@
+name: Validate Skill Manifests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install jsonschema
+
+      - name: Validate all manifests
+        run: python ci/validate_manifests.py
+
+      - name: Run smoke tests
+        run: python tests/smoke_test.py

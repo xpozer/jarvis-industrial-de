@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "id": "lnw-generator",
+  "name": {"de": "Leistungsnachweis-Generator", "en": "Performance Record Draft Generator"},
+  "version": "0.1.0",
+  "description": {
+    "de": "Erstellt Entwürfe für Leistungsnachweise. Nur Entwürfe — vor Einreichung prüfen.",
+    "en": "Generates performance record drafts. Drafts only — review before submission."
+  },
+  "author": "jarvis-industrial-de contributors",
+  "license": "MIT",
+  "permissions": [],
+  "risk_level": "medium",
+  "entry": "handler.py",
+  "inputs": [
+    {"name": "technician", "type": "string", "required": true, "description": {"de": "Name des Technikers", "en": "Technician name"}},
+    {"name": "order_number", "type": "string", "required": true, "description": {"de": "SAP-Auftragsnummer", "en": "SAP order number"}},
+    {"name": "work_description", "type": "string", "required": true, "description": {"de": "Durchgeführte Arbeiten", "en": "Work performed"}},
+    {"name": "hours", "type": "number", "required": true, "description": {"de": "Geleistete Stunden", "en": "Hours worked"}},
+    {"name": "date", "type": "string", "required": false, "description": {"de": "Datum (TT.MM.JJJJ), Standard: heute", "en": "Date (DD.MM.YYYY), default: today"}}
+  ],
+  "outputs": [
+    {"name": "draft", "type": "string", "description": {"de": "Leistungsnachweis-Entwurf", "en": "Performance record draft"}}
+  ],
+  "examples": [
+    {"input": {"technician": "M. Müller", "order_number": "10012345", "work_description": "Schaltanlage geprüft", "hours": 3}, "expected_output_contains": "10012345"}
+  ],
+  "compliance_notice": "Nur Entwürfe. Vor Einreichung durch Auftraggeber prüfen. Kein Normtext.",
+  "tags": ["lnw", "leistungsnachweis", "sap", "elektro"]
+}

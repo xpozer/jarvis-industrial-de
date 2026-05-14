@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "id": "im-quizmaster",
+  "name": {"de": "IHK Industriemeister Quizmaster", "en": "IHK Industrial Master Quiz"},
+  "version": "0.1.0",
+  "description": {
+    "de": "Prüfungsvorbereitung für IHK Industriemeister: BwHa, MIKP, ZIB, NTG. Fragt ab und erklärt.",
+    "en": "Exam preparation for IHK Industrial Master: BwHa, MIKP, ZIB, NTG. Quizzes and explains."
+  },
+  "author": "jarvis-industrial-de contributors",
+  "license": "MIT",
+  "permissions": [],
+  "risk_level": "low",
+  "entry": "handler.py",
+  "inputs": [
+    {"name": "subject", "type": "string", "required": true, "description": {"de": "Fach: bwha, mikp, zib oder ntg", "en": "Subject: bwha, mikp, zib or ntg"}},
+    {"name": "mode", "type": "string", "required": false, "description": {"de": "Modus: question (Standard) oder explain", "en": "Mode: question (default) or explain"}},
+    {"name": "topic", "type": "string", "required": false, "description": {"de": "Optionales Thema innerhalb des Fachs", "en": "Optional topic within the subject"}}
+  ],
+  "outputs": [
+    {"name": "output", "type": "string", "description": {"de": "Frage oder Erklärung", "en": "Question or explanation"}}
+  ],
+  "examples": [
+    {"input": {"subject": "bwha", "mode": "question"}, "expected_output_contains": "?"}
+  ],
+  "compliance_notice": "Lernhilfe ohne Gewähr auf Prüfungsrelevanz. Offizielle IHK-Unterlagen maßgeblich.",
+  "tags": ["ihk", "industriemeister", "prüfung", "lernen", "bwha", "mikp", "zib", "ntg"]
+}

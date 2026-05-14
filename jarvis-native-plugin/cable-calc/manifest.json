@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "id": "cable-calc",
+  "name": {"de": "Kabelquerschnittsrechner", "en": "Cable Cross-Section Calculator"},
+  "version": "0.1.0",
+  "description": {
+    "de": "Berechnet Kabelquerschnitte mit Formeln und Annahmen. Ergebnis durch Fachkraft prüfen.",
+    "en": "Calculates cable cross-sections with formulas and assumptions. Result must be verified by qualified personnel."
+  },
+  "author": "jarvis-industrial-de contributors",
+  "license": "MIT",
+  "permissions": [],
+  "risk_level": "low",
+  "entry": "handler.py",
+  "inputs": [
+    {"name": "current_a", "type": "number", "required": true, "description": {"de": "Strom in Ampere", "en": "Current in amperes"}},
+    {"name": "length_m", "type": "number", "required": true, "description": {"de": "Leitungslänge in Metern", "en": "Cable length in meters"}},
+    {"name": "voltage_v", "type": "number", "required": false, "description": {"de": "Spannung in Volt (Standard: 230)", "en": "Voltage in volts (default: 230)"}},
+    {"name": "material", "type": "string", "required": false, "description": {"de": "Leitermaterial: cu oder al (Standard: cu)", "en": "Conductor material: cu or al (default: cu)"}},
+    {"name": "voltage_drop_pct", "type": "number", "required": false, "description": {"de": "Max. Spannungsfall in % (Standard: 3)", "en": "Max voltage drop in % (default: 3)"}}
+  ],
+  "outputs": [
+    {"name": "result", "type": "string", "description": {"de": "Berechnungsergebnis mit Formeln und Annahmen", "en": "Calculation result with formulas and assumptions"}}
+  ],
+  "examples": [
+    {"input": {"current_a": 16, "length_m": 25, "voltage_v": 230, "material": "cu"}, "expected_output_contains": "mm²"}
+  ],
+  "compliance_notice": "Richtwertberechnung. Keine Normgewähr. Ergebnis durch Elektrofachkraft prüfen lassen.",
+  "tags": ["kabel", "querschnitt", "berechnung", "elektro", "niederspannung"]
+}

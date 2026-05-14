@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "id": "vde-lookup",
+  "name": {"de": "VDE Norm-Nachschlagedienst", "en": "VDE Norm Lookup"},
+  "version": "0.1.0",
+  "description": {
+    "de": "Sucht VDE-Normmetadaten und gibt Quellenangaben zurück. Enthält keinen geschützten Normtext.",
+    "en": "Looks up VDE norm metadata and returns source references. Contains no protected norm text."
+  },
+  "author": "jarvis-industrial-de contributors",
+  "license": "MIT",
+  "permissions": [],
+  "risk_level": "low",
+  "entry": "handler.py",
+  "inputs": [
+    {"name": "norm_id", "type": "string", "required": true, "description": {"de": "Normbezeichnung, z.B. VDE 0100", "en": "Norm identifier, e.g. VDE 0100"}},
+    {"name": "query", "type": "string", "required": false, "description": {"de": "Suchbegriff innerhalb der Norm", "en": "Search term within the norm"}}
+  ],
+  "outputs": [
+    {"name": "result", "type": "string", "description": {"de": "Normmetadaten und Quellenangabe", "en": "Norm metadata and source reference"}}
+  ],
+  "examples": [
+    {"input": {"norm_id": "VDE 0100"}, "expected_output_contains": "VDE 0100"}
+  ],
+  "compliance_notice": "Enthält keinen geschützten Normtext. Nur Metadaten und Quellenangaben aus öffentlich zugänglichen Quellen.",
+  "tags": ["vde", "norm", "elektro", "lookup"]
+}
