@@ -1,38 +1,53 @@
 # jarvis-industrial-de
 
-Industrial skill pack for JARVIS and OpenJarvis-compatible assistants.
+**Industrial skill pack for JARVIS.**
 
-Dual distribution:
-- **OpenJarvis skill pack** — compatible with OpenJarvis-style skill loaders
-- **JARVIS-native plugin** — loads directly into jarvis-windows-standalone via B8 SkillCompat
+`jarvis-industrial-de` adds specialist electrical-planning workflows to the broader JARVIS ecosystem without turning the main product into a niche-only assistant.
 
-## Modules
+It is designed for dual distribution:
 
-| Skill | Description | Risk |
-|-------|-------------|------|
+- **JARVIS-native plugin** - loads into [`jarvis-windows-standalone`](https://github.com/xpozer/jarvis-windows-standalone)
+- **OpenJarvis-compatible skill pack** - can be adapted for compatible skill loaders
+
+## What it adds
+
+| Skill | Purpose | Risk |
+|---|---|---:|
 | `vde-lookup` | VDE norm metadata lookup and source references | low |
-| `sap-offer-builder` | SAP PM offer draft generator | medium |
-| `lnw-generator` | Leistungsnachweis draft generator | medium |
-| `cable-calc` | Cable cross-section calculator with formulas | low |
-| `im-quizmaster` | IHK Industriemeister quiz (BwHa, MIKP, ZIB, NTG) | low |
+| `sap-offer-builder` | SAP PM offer draft generation | medium |
+| `lnw-generator` | Leistungsnachweis draft generation | medium |
+| `cable-calc` | Cable cross-section calculations with formulas | low |
+| `im-quizmaster` | IHK Industriemeister quiz support | low |
+
+## Why it exists
+
+The main JARVIS product is aimed at everyday Windows use: dictation, document Q&A, research, approvals, and memory control.
+
+This plugin keeps specialist depth available without letting industrial workflows dominate the public product story. It is where domain-specific capability belongs.
 
 ## Installation
 
-### As JARVIS-native plugin (requires B8 SkillCompat)
+### As a JARVIS-native plugin
 
-```
+```bash
 jarvis skills install https://github.com/xpozer/jarvis-industrial-de
 ```
 
-### As OpenJarvis skill pack
+### As an OpenJarvis-compatible skill pack
 
-Copy `openjarvis-skillpack/` into your OpenJarvis skills directory.
+Copy `openjarvis-skillpack/` into the target assistant's skill directory.
 
 ## Compliance
 
-This plugin contains no protected VDE, DIN, Beuth or DGUV text.
-All norm references are metadata and source citations only.
-See `compliance/COMPLIANCE_POLICY.md`.
+This repository contains no protected VDE, DIN, Beuth, or DGUV text.
+
+Norm-related modules should use metadata and source references only. See `compliance/COMPLIANCE_POLICY.md`.
+
+## Relationship to JARVIS
+
+- Main product: [`jarvis-windows-standalone`](https://github.com/xpozer/jarvis-windows-standalone)
+- This repository: specialist industrial extension
+- Design principle: useful everyday assistant first, domain plugins second
 
 ## License
 
